@@ -1,9 +1,9 @@
-package com.dmitry.fractrandom_generator;
+package com.dmitry.fract_random_generator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.dmitry.random_generator.R;
+import com.dmitry.fract_random_generator.R;
 
 public class MainActivity extends AppCompatActivity {
 

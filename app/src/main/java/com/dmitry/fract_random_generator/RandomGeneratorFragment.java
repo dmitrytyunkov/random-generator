@@ -1,4 +1,4 @@
-package com.dmitry.fractrandom_generator;
+package com.dmitry.fract_random_generator;
 
 
 import android.content.ClipData;
