@@ -1,4 +1,4 @@
-package com.example.dmitry.random_generator;
+package com.dmitry.fractrandom_generator;
 
 
 import android.content.ClipData;
@@ -23,9 +23,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 
 /**
@@ -38,22 +39,23 @@ public class RandomGeneratorFragment extends Fragment {
     public static final String RESULT_CLIP = "result_clip";
     private final Random random = new Random();
 
-    @Bind(R.id.min_value_text)
+    @BindView(R.id.min_value_text)
     EditText minValueText;
-    @Bind(R.id.max_value_text)
+    @BindView(R.id.max_value_text)
     EditText maxValueText;
-    @Bind(R.id.quantity_label)
+    @BindView(R.id.quantity_label)
     TextView quantityLabel;
-    @Bind(R.id.quantity_seek_bar)
+    @BindView(R.id.quantity_seek_bar)
     SeekBar quantitySeekBar;
-    @Bind(R.id.result_label)
+    @BindView(R.id.result_label)
     TextView resultLabel;
-    @Bind(R.id.not_repeating_check_box)
+    @BindView(R.id.not_repeating_check_box)
     CheckBox notRepeatingCheckBox;
-    @Bind(R.id.decimal_places_label)
+    @BindView(R.id.decimal_places_label)
     TextView decimalPlacesLabel;
-    @Bind(R.id.decimal_places_seek_bar)
+    @BindView(R.id.decimal_places_seek_bar)
     SeekBar decimalPlacesSeekBar;
+    private Unbinder unbinder;
 
     private int quantity = 0;
     private int decimalPlaces = 0;
@@ -87,7 +89,7 @@ public class RandomGeneratorFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_random_generator, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         quantityLabel.setText(String.format(Locale.US, "%s %d",
                 getString(R.string.quantity_label), quantitySeekBar.getProgress() + 1));
@@ -140,7 +142,7 @@ public class RandomGeneratorFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
 
